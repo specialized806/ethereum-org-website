@@ -1,15 +1,10 @@
-// Libraries
-import React from "react"
+import { useTranslation } from "next-i18next"
 
-// Components
-import CardList, { CardListItem } from "../CardList"
-import { Stack } from "@chakra-ui/react"
-import { useTranslation } from "gatsby-plugin-react-i18next"
+import CardList, { type CardListItem } from "@/components/CardList"
 
-export interface IProps {}
+const StakingGuides = () => {
+  const { t } = useTranslation("page-staking")
 
-const StakingGuides: React.FC<IProps> = () => {
-  const { t } = useTranslation()
   const guides: CardListItem[] = [
     {
       title: t("page-staking-guide-title-coincashew-ethereum"),
@@ -23,12 +18,17 @@ const StakingGuides: React.FC<IProps> = () => {
     },
     {
       title: t("page-staking-guide-title-rocket-pool"),
-      link: "https://rocketpool.net/node-operators",
+      link: "https://docs.rocketpool.net/guides/node/responsibilities",
       description: t("page-staking-guide-description-mac-linux"),
+    },
+    {
+      title: t("page-staking-guide-title-stakewise"),
+      link: "https://docs.stakewise.io/guides/staking#liquid-solo-staking",
+      description: t("page-staking-guide-description-mac-linux-windows"),
     },
   ]
 
-  return <Stack as={CardList} direction="column" gap={4} items={guides} />
+  return <CardList className="flex flex-col gap-4" items={guides} />
 }
 
 export default StakingGuides

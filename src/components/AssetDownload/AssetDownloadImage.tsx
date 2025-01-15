@@ -1,27 +1,17 @@
-import React from "react"
-import { Center } from "@chakra-ui/react"
-import GatsbyImage from "../GatsbyImage"
+import { ImageProps } from "next/image"
 
-import { getImage, ImageDataLike } from "../../utils/image"
+import { TwImage } from "../Image"
+import { Center } from "../ui/flex"
 
-interface Props {
-  image?: ImageDataLike | null
+interface AssetDownloadImageProps {
+  image: ImageProps["src"]
   alt: string
 }
 
-const AssetDownloadImage = ({ image, alt }: Props) => {
-  return (
-    <Center border="1px" borderColor="white700" p={8} w="100%">
-      {image && (
-        <GatsbyImage
-          image={getImage(image)!}
-          alt={alt}
-          w="100%"
-          alignSelf="center"
-        />
-      )}
-    </Center>
-  )
-}
+const AssetDownloadImage = ({ image, alt }: AssetDownloadImageProps) => (
+  <Center className="w-full border p-8">
+    <TwImage src={image} alt={alt} className="w-full self-center" />
+  </Center>
+)
 
 export default AssetDownloadImage
